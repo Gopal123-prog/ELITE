@@ -1,0 +1,8 @@
+public static List<Integer> countingSort(List<Integer> arr) {
+          List<Integer> lst = new ArrayList<>(Collections.nCopies(100, 0));
+          for (int i=0;i<arr.size();i++){
+               lst.set(arr.get(i),lst.get(arr.get(i))+1);
+          }
+           return lst; 
+         
+    }
