@@ -1,0 +1,23 @@
+public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+    Map<String,Integer> map = new HashMap<String,Integer>();
+    int n = strings.size();
+    for (int i=0;i<n;i++){
+        if (!map.containsKey(strings.get(i))){
+            map.put(strings.get(i),1);
+        }else{
+            map.put(strings.get(i),map.get(strings.get(i))+1);
+        }
+    }
+    List<Integer> lst = new ArrayList<>();
+    for (int j=0;j<queries.size();j++){
+        if (map.containsKey(queries.get(j))){
+            lst.add(map.get(queries.get(j)));
+        }else{
+            lst.add(0);
+        }
+    }
+    return lst;
+    
+    }
+
+}
