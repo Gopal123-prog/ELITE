@@ -1,0 +1,13 @@
+ public static int pageCount(int n, int p) {
+    int res = 0;
+    int maxi = 0;
+    int mini = 0;
+    mini = p/2;
+        if(n%2==0){
+            maxi = (n-p+1)/2;
+        }else{
+            maxi = (n-p)/2;
+        }
+    return Math.min(maxi,mini);
+     
+    }
