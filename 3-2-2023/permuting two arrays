@@ -1,0 +1,20 @@
+  public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
+    int count = 0;
+    Collections.sort(A);
+    Collections.sort(B);
+    for (int i=0;i<A.size();i++){
+          int val =k-A.get(i);
+          for (int j=0;j<B.size();j++){
+              if (B.get(j)>=val){
+                  count = count + 1;
+                  B.remove(B.get(j));
+                  break;
+              }
+          }
+    }
+     if (count==A.size()){
+         return "YES";
+     }else{
+         return "NO";
+     }
+    }
