@@ -1,0 +1,78 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+class Student{
+    private String name;
+    private int rollno;
+    private String branch;
+    private int year;
+    private static int nofstudents;
+    List<Integer> marks = new ArrayList<>();
+    Student(String name,int rollno,String branch,int year){
+        this.name = name;
+        this.rollno = rollno;
+        this.branch = branch;
+        this.year = year;
+        nofstudents++;
+    }
+    public String getName(){
+    return name;
+    }
+    public int getRollno(){
+        return rollno;
+    }
+    public String getBranch(){
+        return branch;
+    }
+    public int getYear(){
+        return year;
+    }
+    public void display(){
+        System.out.println(rollno+" "+name+" "+branch+" "+year);
+    }
+    public void setMarks(int inmark){
+    marks.add(inmark);    
+    }
+    public double computemrk(){
+        double sum=0;
+        for (int mark:marks){
+            sum = sum + mark;
+        }
+        if (marks.size()==0){
+            return 0;
+        }else{
+            return sum/marks.size();
+            }
+    }
+    public static int noofstudent(){
+        return nofstudents;
+    }
+}
+public class Solution{
+    public static void main(String[] args){
+    Scanner in = new Scanner(System.in);
+    int n = in.nextInt();
+    in.nextLine();
+    List<Student> list = new ArrayList<>();
+    for (int i=0;i<n;i++){
+        String[] str = in.nextLine().split(" ");
+        Student s = new Student(str[0],Integer.parseInt(str[1]),str[2],Integer.parseInt(str[3]));
+        list.add(s);
+        String[] mrk = in.nextLine().split(" ");
+        for (int j=0;j<mrk.length;j++){
+            list.get(i).setMarks(Integer.parseInt(mrk[j]));
+        }
+    }
+        for (int i=0;i<n;i++){
+            Student s  = list.get(i);
+            s.display();
+            System.out.print(s.getRollno()+" ");
+             System.out.printf("%.2f",s.computemrk());
+            System.out.println();
+        }
+        System.out.println("NoOfStudents="+Student.noofstudent());
+        
+    }
+}
